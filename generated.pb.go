@@ -118,9 +118,97 @@ func (m *ReturnValue) GetErr() string {
 	return ""
 }
 
+type CreateCheckpoint struct {
+	PodName              *string  `protobuf:"bytes,1,req,name=PodName" json:"PodName,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CreateCheckpoint) Reset()         { *m = CreateCheckpoint{} }
+func (m *CreateCheckpoint) String() string { return proto.CompactTextString(m) }
+func (*CreateCheckpoint) ProtoMessage()    {}
+func (*CreateCheckpoint) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e6ed858329eb171d, []int{2}
+}
+
+func (m *CreateCheckpoint) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateCheckpoint.Unmarshal(m, b)
+}
+func (m *CreateCheckpoint) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateCheckpoint.Marshal(b, m, deterministic)
+}
+func (m *CreateCheckpoint) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateCheckpoint.Merge(m, src)
+}
+func (m *CreateCheckpoint) XXX_Size() int {
+	return xxx_messageInfo_CreateCheckpoint.Size(m)
+}
+func (m *CreateCheckpoint) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateCheckpoint.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateCheckpoint proto.InternalMessageInfo
+
+func (m *CreateCheckpoint) GetPodName() string {
+	if m != nil && m.PodName != nil {
+		return *m.PodName
+	}
+	return ""
+}
+
+type PodReturnValue struct {
+	CheckpointName       *string  `protobuf:"bytes,1,req,name=CheckpointName" json:"CheckpointName,omitempty"`
+	Err                  *string  `protobuf:"bytes,2,req,name=err" json:"err,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *PodReturnValue) Reset()         { *m = PodReturnValue{} }
+func (m *PodReturnValue) String() string { return proto.CompactTextString(m) }
+func (*PodReturnValue) ProtoMessage()    {}
+func (*PodReturnValue) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e6ed858329eb171d, []int{3}
+}
+
+func (m *PodReturnValue) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PodReturnValue.Unmarshal(m, b)
+}
+func (m *PodReturnValue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PodReturnValue.Marshal(b, m, deterministic)
+}
+func (m *PodReturnValue) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PodReturnValue.Merge(m, src)
+}
+func (m *PodReturnValue) XXX_Size() int {
+	return xxx_messageInfo_PodReturnValue.Size(m)
+}
+func (m *PodReturnValue) XXX_DiscardUnknown() {
+	xxx_messageInfo_PodReturnValue.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PodReturnValue proto.InternalMessageInfo
+
+func (m *PodReturnValue) GetCheckpointName() string {
+	if m != nil && m.CheckpointName != nil {
+		return *m.CheckpointName
+	}
+	return ""
+}
+
+func (m *PodReturnValue) GetErr() string {
+	if m != nil && m.Err != nil {
+		return *m.Err
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*InputValue)(nil), "checkpoint.InputValue")
 	proto.RegisterType((*ReturnValue)(nil), "checkpoint.ReturnValue")
+	proto.RegisterType((*CreateCheckpoint)(nil), "checkpoint.CreateCheckpoint")
+	proto.RegisterType((*PodReturnValue)(nil), "checkpoint.PodReturnValue")
 }
 
 func init() {
@@ -128,17 +216,21 @@ func init() {
 }
 
 var fileDescriptor_e6ed858329eb171d = []byte{
-	// 158 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4f, 0x4f, 0xcd, 0x4b,
-	0x2d, 0x4a, 0x2c, 0x49, 0x4d, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x4a, 0xce, 0x48,
-	0x4d, 0xce, 0x2e, 0xc8, 0xcf, 0xcc, 0x2b, 0x51, 0xd2, 0xe5, 0xe2, 0xf2, 0xcc, 0x2b, 0x28, 0x2d,
-	0x09, 0x4b, 0xcc, 0x29, 0x4d, 0x15, 0xe2, 0xe3, 0x62, 0x0b, 0x48, 0x2d, 0xca, 0xcc, 0x4f, 0x91,
-	0x60, 0x54, 0x60, 0xd2, 0x60, 0x16, 0xe2, 0xe7, 0x62, 0x0f, 0xc8, 0x4f, 0xf1, 0x4b, 0xcc, 0x4d,
-	0x95, 0x60, 0x52, 0x60, 0xd6, 0xe0, 0x54, 0xd2, 0xe2, 0xe2, 0x0e, 0x4a, 0x2d, 0x29, 0x2d, 0xca,
-	0xc3, 0xae, 0x9e, 0x9b, 0x8b, 0x39, 0xb5, 0xa8, 0x48, 0x82, 0x49, 0x81, 0x49, 0x83, 0xd3, 0x28,
-	0x86, 0x4b, 0xc0, 0x19, 0x6e, 0x11, 0x44, 0x99, 0x90, 0x07, 0x97, 0x70, 0x70, 0x6a, 0x09, 0x86,
-	0xb0, 0x98, 0x1e, 0xc2, 0x49, 0x7a, 0x08, 0xf7, 0x48, 0x89, 0x23, 0x8b, 0x23, 0x59, 0xac, 0xc4,
-	0x00, 0x08, 0x00, 0x00, 0xff, 0xff, 0xb8, 0x19, 0x0f, 0x3e, 0xd6, 0x00, 0x00, 0x00,
+	// 214 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x8f, 0xc1, 0x8a, 0x83, 0x30,
+	0x10, 0x40, 0x35, 0xc2, 0x2e, 0x8e, 0xa0, 0x92, 0x05, 0x57, 0x64, 0x0f, 0x92, 0xbd, 0xc8, 0xc2,
+	0x7a, 0x58, 0xd8, 0x2f, 0xf0, 0xd2, 0x5e, 0x44, 0x5a, 0xe8, 0x3d, 0x98, 0xa1, 0x95, 0xb6, 0x89,
+	0x84, 0xf8, 0x57, 0xfd, 0xc8, 0x42, 0x85, 0x26, 0xb6, 0xbd, 0x4e, 0x5e, 0xde, 0xcc, 0x83, 0x64,
+	0x8f, 0x12, 0x35, 0x37, 0x28, 0xea, 0x51, 0x2b, 0xa3, 0x28, 0xf4, 0x07, 0xec, 0x8f, 0xa3, 0x1a,
+	0xa4, 0x61, 0xbf, 0x00, 0x6b, 0x39, 0x4e, 0x66, 0xc7, 0x4f, 0x13, 0xd2, 0x18, 0xde, 0x3a, 0xd4,
+	0x83, 0x12, 0xb9, 0x5f, 0x92, 0x2a, 0xa0, 0x09, 0xbc, 0x77, 0x4a, 0xb4, 0xfc, 0x8c, 0x39, 0x29,
+	0x83, 0x2a, 0x64, 0x3f, 0x10, 0x6d, 0xd0, 0x4c, 0x5a, 0xbe, 0xe6, 0x23, 0x08, 0x50, 0xeb, 0x9c,
+	0x94, 0xa4, 0x0a, 0xd9, 0x37, 0xa4, 0x8d, 0x46, 0x6e, 0xb0, 0xb9, 0xaf, 0x73, 0x85, 0xfe, 0x0d,
+	0xfa, 0x87, 0xb8, 0x53, 0xc2, 0x75, 0x66, 0x10, 0xdb, 0x0f, 0x96, 0x5c, 0xb8, 0xff, 0x2e, 0x3e,
+	0xa4, 0x96, 0x9a, 0x6f, 0xa0, 0x2b, 0xf8, 0xd8, 0xa2, 0x79, 0x1a, 0x67, 0xb5, 0xed, 0xad, 0x6d,
+	0x6c, 0xf1, 0xe9, 0xce, 0x9d, 0x0b, 0x98, 0x47, 0x5b, 0xd7, 0x3e, 0x47, 0xd0, 0x2f, 0x17, 0x7f,
+	0x0c, 0x2b, 0x0a, 0xf7, 0x75, 0x59, 0xc4, 0xbc, 0x6b, 0x00, 0x00, 0x00, 0xff, 0xff, 0x21, 0xc5,
+	0x4b, 0xb6, 0x83, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -154,6 +246,7 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type CheckpointPeriodClient interface {
 	SetCheckpointPeriod(ctx context.Context, in *InputValue, opts ...grpc.CallOption) (*ReturnValue, error)
+	CheckpointCreate(ctx context.Context, in *CreateCheckpoint, opts ...grpc.CallOption) (*PodReturnValue, error)
 }
 
 type checkpointPeriodClient struct {
@@ -173,9 +266,19 @@ func (c *checkpointPeriodClient) SetCheckpointPeriod(ctx context.Context, in *In
 	return out, nil
 }
 
+func (c *checkpointPeriodClient) CheckpointCreate(ctx context.Context, in *CreateCheckpoint, opts ...grpc.CallOption) (*PodReturnValue, error) {
+	out := new(PodReturnValue)
+	err := c.cc.Invoke(ctx, "/checkpoint.CheckpointPeriod/CheckpointCreate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CheckpointPeriodServer is the server API for CheckpointPeriod service.
 type CheckpointPeriodServer interface {
 	SetCheckpointPeriod(context.Context, *InputValue) (*ReturnValue, error)
+	CheckpointCreate(context.Context, *CreateCheckpoint) (*PodReturnValue, error)
 }
 
 // UnimplementedCheckpointPeriodServer can be embedded to have forward compatible implementations.
@@ -184,6 +287,9 @@ type UnimplementedCheckpointPeriodServer struct {
 
 func (*UnimplementedCheckpointPeriodServer) SetCheckpointPeriod(ctx context.Context, req *InputValue) (*ReturnValue, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetCheckpointPeriod not implemented")
+}
+func (*UnimplementedCheckpointPeriodServer) CheckpointCreate(ctx context.Context, req *CreateCheckpoint) (*PodReturnValue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckpointCreate not implemented")
 }
 
 func RegisterCheckpointPeriodServer(s *grpc.Server, srv CheckpointPeriodServer) {
@@ -208,6 +314,24 @@ func _CheckpointPeriod_SetCheckpointPeriod_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CheckpointPeriod_CheckpointCreate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCheckpoint)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CheckpointPeriodServer).CheckpointCreate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/checkpoint.CheckpointPeriod/CheckpointCreate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CheckpointPeriodServer).CheckpointCreate(ctx, req.(*CreateCheckpoint))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _CheckpointPeriod_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "checkpoint.CheckpointPeriod",
 	HandlerType: (*CheckpointPeriodServer)(nil),
@@ -215,6 +339,10 @@ var _CheckpointPeriod_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetCheckpointPeriod",
 			Handler:    _CheckpointPeriod_SetCheckpointPeriod_Handler,
+		},
+		{
+			MethodName: "CheckpointCreate",
+			Handler:    _CheckpointPeriod_CheckpointCreate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

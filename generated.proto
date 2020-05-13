@@ -4,6 +4,7 @@ package checkpoint;
 
 service CheckpointPeriod {
     rpc SetCheckpointPeriod (InputValue) returns (ReturnValue) {}
+    rpc CheckpointCreate (CreateCheckpoint) returns (PodReturnValue) {}
 }
 
 message InputValue {
@@ -13,5 +14,14 @@ message InputValue {
 
 message ReturnValue {
     required int64 Period = 1;
+    required string err = 2;
+}
+
+message CreateCheckpoint {
+    required string PodName = 1;
+}
+
+message PodReturnValue {
+    required string CheckpointName = 1;
     required string err = 2;
 }
