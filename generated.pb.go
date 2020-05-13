@@ -128,17 +128,17 @@ func init() {
 }
 
 var fileDescriptor_e6ed858329eb171d = []byte{
-	// 159 bytes of a gzipped FileDescriptorProto
+	// 158 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4f, 0x4f, 0xcd, 0x4b,
 	0x2d, 0x4a, 0x2c, 0x49, 0x4d, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x4a, 0xce, 0x48,
 	0x4d, 0xce, 0x2e, 0xc8, 0xcf, 0xcc, 0x2b, 0x51, 0xd2, 0xe5, 0xe2, 0xf2, 0xcc, 0x2b, 0x28, 0x2d,
 	0x09, 0x4b, 0xcc, 0x29, 0x4d, 0x15, 0xe2, 0xe3, 0x62, 0x0b, 0x48, 0x2d, 0xca, 0xcc, 0x4f, 0x91,
 	0x60, 0x54, 0x60, 0xd2, 0x60, 0x16, 0xe2, 0xe7, 0x62, 0x0f, 0xc8, 0x4f, 0xf1, 0x4b, 0xcc, 0x4d,
 	0x95, 0x60, 0x52, 0x60, 0xd6, 0xe0, 0x54, 0xd2, 0xe2, 0xe2, 0x0e, 0x4a, 0x2d, 0x29, 0x2d, 0xca,
-	0xc3, 0xae, 0x9e, 0x9b, 0x8b, 0x39, 0xb5, 0xa8, 0x48, 0x82, 0x49, 0x81, 0x49, 0x83, 0xd3, 0xc8,
-	0x9f, 0x8b, 0x3b, 0x38, 0x35, 0x2f, 0xc5, 0x39, 0xa7, 0xb4, 0xb8, 0x24, 0xb5, 0x48, 0xc8, 0x01,
-	0x95, 0x2b, 0xa6, 0x87, 0x70, 0x85, 0x1e, 0xc2, 0x09, 0x52, 0xe2, 0xc8, 0xe2, 0x48, 0x76, 0x29,
-	0x31, 0x00, 0x02, 0x00, 0x00, 0xff, 0xff, 0x7f, 0xdf, 0xba, 0xfc, 0xc9, 0x00, 0x00, 0x00,
+	0xc3, 0xae, 0x9e, 0x9b, 0x8b, 0x39, 0xb5, 0xa8, 0x48, 0x82, 0x49, 0x81, 0x49, 0x83, 0xd3, 0x28,
+	0x86, 0x4b, 0xc0, 0x19, 0x6e, 0x11, 0x44, 0x99, 0x90, 0x07, 0x97, 0x70, 0x70, 0x6a, 0x09, 0x86,
+	0xb0, 0x98, 0x1e, 0xc2, 0x49, 0x7a, 0x08, 0xf7, 0x48, 0x89, 0x23, 0x8b, 0x23, 0x59, 0xac, 0xc4,
+	0x00, 0x08, 0x00, 0x00, 0xff, 0xff, 0xb8, 0x19, 0x0f, 0x3e, 0xd6, 0x00, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -149,72 +149,72 @@ var _ grpc.ClientConnInterface
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// SendClusterClient is the client API for SendCluster service.
+// CheckpointPeriodClient is the client API for CheckpointPeriod service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type SendClusterClient interface {
-	SendCluster(ctx context.Context, in *InputValue, opts ...grpc.CallOption) (*ReturnValue, error)
+type CheckpointPeriodClient interface {
+	SetCheckpointPeriod(ctx context.Context, in *InputValue, opts ...grpc.CallOption) (*ReturnValue, error)
 }
 
-type sendClusterClient struct {
+type checkpointPeriodClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewSendClusterClient(cc grpc.ClientConnInterface) SendClusterClient {
-	return &sendClusterClient{cc}
+func NewCheckpointPeriodClient(cc grpc.ClientConnInterface) CheckpointPeriodClient {
+	return &checkpointPeriodClient{cc}
 }
 
-func (c *sendClusterClient) SendCluster(ctx context.Context, in *InputValue, opts ...grpc.CallOption) (*ReturnValue, error) {
+func (c *checkpointPeriodClient) SetCheckpointPeriod(ctx context.Context, in *InputValue, opts ...grpc.CallOption) (*ReturnValue, error) {
 	out := new(ReturnValue)
-	err := c.cc.Invoke(ctx, "/checkpoint.SendCluster/SendCluster", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/checkpoint.CheckpointPeriod/SetCheckpointPeriod", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// SendClusterServer is the server API for SendCluster service.
-type SendClusterServer interface {
-	SendCluster(context.Context, *InputValue) (*ReturnValue, error)
+// CheckpointPeriodServer is the server API for CheckpointPeriod service.
+type CheckpointPeriodServer interface {
+	SetCheckpointPeriod(context.Context, *InputValue) (*ReturnValue, error)
 }
 
-// UnimplementedSendClusterServer can be embedded to have forward compatible implementations.
-type UnimplementedSendClusterServer struct {
+// UnimplementedCheckpointPeriodServer can be embedded to have forward compatible implementations.
+type UnimplementedCheckpointPeriodServer struct {
 }
 
-func (*UnimplementedSendClusterServer) SendCluster(ctx context.Context, req *InputValue) (*ReturnValue, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SendCluster not implemented")
+func (*UnimplementedCheckpointPeriodServer) SetCheckpointPeriod(ctx context.Context, req *InputValue) (*ReturnValue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetCheckpointPeriod not implemented")
 }
 
-func RegisterSendClusterServer(s *grpc.Server, srv SendClusterServer) {
-	s.RegisterService(&_SendCluster_serviceDesc, srv)
+func RegisterCheckpointPeriodServer(s *grpc.Server, srv CheckpointPeriodServer) {
+	s.RegisterService(&_CheckpointPeriod_serviceDesc, srv)
 }
 
-func _SendCluster_SendCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CheckpointPeriod_SetCheckpointPeriod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(InputValue)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SendClusterServer).SendCluster(ctx, in)
+		return srv.(CheckpointPeriodServer).SetCheckpointPeriod(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/checkpoint.SendCluster/SendCluster",
+		FullMethod: "/checkpoint.CheckpointPeriod/SetCheckpointPeriod",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SendClusterServer).SendCluster(ctx, req.(*InputValue))
+		return srv.(CheckpointPeriodServer).SetCheckpointPeriod(ctx, req.(*InputValue))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _SendCluster_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "checkpoint.SendCluster",
-	HandlerType: (*SendClusterServer)(nil),
+var _CheckpointPeriod_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "checkpoint.CheckpointPeriod",
+	HandlerType: (*CheckpointPeriodServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SendCluster",
-			Handler:    _SendCluster_SendCluster_Handler,
+			MethodName: "SetCheckpointPeriod",
+			Handler:    _CheckpointPeriod_SetCheckpointPeriod_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

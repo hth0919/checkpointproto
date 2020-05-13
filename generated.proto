@@ -2,8 +2,8 @@ syntax = 'proto2';
 
 package checkpoint;
 
-service SendCluster {
-    rpc SendCluster (InputValue) returns (ReturnValue) {}
+service CheckpointPeriod {
+    rpc SetCheckpointPeriod (InputValue) returns (ReturnValue) {}
 }
 
 message InputValue {
